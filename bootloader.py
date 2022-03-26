@@ -1,5 +1,6 @@
 import os
 
+os.system("clear")
 os.chdir("/".join(__file__.split("/")[:-1]))
 
 def check():
