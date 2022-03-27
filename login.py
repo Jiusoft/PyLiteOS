@@ -1,19 +1,23 @@
 import os, sys, time
 
 args = sys.argv[1:]
+os.system("clear")
 
 def register():
     print("Welcome New User, let's create a new account for PySubOS. ")
     username = input("Username for New User: ")
     password = input("Password for New User: ")
-    if os.path.exists("users"):
-        os.chdir("users")
-    else:
+    if not os.path.exists("users"):
         os.mkdir("users")
-        os.chdir("users")
+    if not os.path.exists("disk"):
+        os.mkdir("disk")
     try:
+        os.chdir("users")
         os.mkdir(username)
         os.chdir(username)
+        os.chdir("../../disk")
+        os.mkdir(username)
+        os.chdir("../users/"+username)
         print("Thank you for the information, setting up new user. ")
     except FileExistsError:
         print("User Exists. ")
