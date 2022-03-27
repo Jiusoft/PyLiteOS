@@ -1,4 +1,4 @@
-import os, sys, time
+import os, sys, time, shutil
 
 args = sys.argv[1:]
 os.system("clear")
@@ -14,14 +14,14 @@ def register():
     try:
         os.chdir("users")
         os.mkdir(username)
-        os.chdir(username)
-        os.chdir("../../disk")
+        os.chdir("../disk")
         os.mkdir(username)
+        shutil.copytree("../userfiles", "../users/"+username, dirs_exist_ok=True)
         os.chdir("../users/"+username)
         print("Thank you for the information, setting up new user. ")
     except FileExistsError:
         print("User Exists. ")
-        time.sleep(1)
+        time.sleep(3)
         os.system("clear")
         register()
     with open("password.pwd", "w") as pwd:
@@ -37,7 +37,9 @@ def login():
     else:
         for user in next(os.walk('users'))[1]:
             print(f"[{next(os.walk('users'))[1].index(user)+1}] {user}")
-        input("\n[?]: ")
+        user = input("\n[]: ")
+        os.chdir("./users/" + next(os.walk('users'))[1][int(user)-1])
+        os.system("python3 verification.py")
 
 if args[0]=="register":
     register()
