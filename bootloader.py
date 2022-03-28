@@ -1,7 +1,7 @@
 import os, time
 from pathlib import Path
 
-os.system("clear")
+os.system("cls" if os.name=="nt" else "clear")
 os.chdir(Path(__file__).parent) 
 
 def check():

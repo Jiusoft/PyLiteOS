@@ -1,7 +1,7 @@
 import os, sys, time, shutil
 
 args = sys.argv[1:]
-os.system("clear")
+os.system("cls" if os.name=="nt" else "clear")
 
 def register():
     print("Welcome New User, let's create a new account for PySubOS. ")
@@ -22,13 +22,13 @@ def register():
     except FileExistsError:
         print("User Exists. ")
         time.sleep(3)
-        os.system("clear")
+        os.system("cls" if os.name=="nt" else "clear")
         register()
     with open("password.pwd", "w") as pwd:
         pwd.write(password)
     os.chdir("../../")
     time.sleep(2)
-    os.system("clear")
+    os.system("cls" if os.name=="nt" else "clear")
     login()
 
 def login():

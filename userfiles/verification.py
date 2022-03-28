@@ -1,7 +1,7 @@
 import os, sys, time
 
 def verify():
-    os.system("clear")
+    os.system("cls" if os.name=="nt" else "clear")
     password = open("password.pwd", "r").read()
     pwdinput = input("Please Enter Password: ")
     if pwdinput == password:

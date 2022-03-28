@@ -22,7 +22,8 @@ print("""
 [1] Browser
 [2] Terminal
 [3] Calculator
-[4] Settings
+[4] Text Editor
+[5] Settings
 """)
 while True:
     option = int(input("[]: "))
@@ -32,3 +33,5 @@ while True:
         pass
     elif option==3:
         os.system("python3 calculator.py")
+    elif option==4:
+        os.system("vim")
