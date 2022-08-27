@@ -1,4 +1,5 @@
 import os, sys, time, shutil
+from getpass import getpass
 
 args = sys.argv[1:]
 os.system("cls" if os.name=="nt" else "clear")
@@ -6,7 +7,7 @@ os.system("cls" if os.name=="nt" else "clear")
 def register():
     print("Welcome New User, let's create a new account for PySubOS. ")
     username = input("Username for New User: ")
-    password = input("Password for New User: ")
+    password = getpass("Password for New User: ")
     if not os.path.exists("users"):
         os.mkdir("users")
     if not os.path.exists("disk"):

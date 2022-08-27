@@ -1,38 +1,43 @@
-import os, time
+import os, time, runpy
 
 os.system("cls" if os.name=="nt" else "clear")
 
 while True:
-    operation = input("Operation (+ for plus, - for minus, * for multply, / for divide, ** for to the power of, exit for back): ")
+    print("PySubOS Calculator\n")
+    operation = input("Operation (+ for plus, - for minus, * for multply, / for divide, ** for to the power of, exit for back): ").strip()
     if operation=="exit":
-        print(os.getcwd())
-        os.system("python3 desktop.py")
-    number_1 = int(input('Enter your first number: '))
-    number_2 = int(input('Enter your second number: '))
+        runpy.run_path(path_name="desktop.py")
+    number_1 = int(input('Enter your first number: ').strip())
+    number_2 = int(input('Enter your second number: ').strip())
 
     if operation == '+':
         print('{} + {} = '.format(number_1, number_2))
         print(number_1 + number_2)
+        input("Press Enter to Continue...")
         os.system("cls" if os.name=="nt" else "clear")
 
     elif operation == '-':
         print('{} - {} = '.format(number_1, number_2))
         print(number_1 - number_2)
+        input("Press Enter to Continue...")
         os.system("cls" if os.name=="nt" else "clear")
 
     elif operation == '*':
         print('{} * {} = '.format(number_1, number_2))
         print(number_1 * number_2)
+        input("Press Enter to Continue...")
         os.system("cls" if os.name=="nt" else "clear")
 
     elif operation == '/':
         print('{} / {} = '.format(number_1, number_2))
         print(number_1 / number_2)
+        input("Press Enter to Continue...")
         os.system("cls" if os.name=="nt" else "clear")
 
     elif operation == '**':
         print('{} ** {} = '.format(number_1, number_2))
         print(number_1 ** number_2)
+        input("Press Enter to Continue...")
         os.system("cls" if os.name=="nt" else "clear")
 
     else:

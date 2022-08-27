@@ -1,15 +1,7 @@
-import os, sys, time
+import os, sys, time, runpy
 from pathlib import Path
 
 os.system("clear")
-print("""██████╗ ██╗   ██╗███████╗██╗   ██╗██████╗  ██████╗ ███████╗
-██╔══██╗╚██╗ ██╔╝██╔════╝██║   ██║██╔══██╗██╔═══██╗██╔════╝
-██████╔╝ ╚████╔╝ ███████╗██║   ██║██████╔╝██║   ██║███████╗
-██╔═══╝   ╚██╔╝  ╚════██║██║   ██║██╔══██╗██║   ██║╚════██║
-██║        ██║   ███████║╚██████╔╝██████╔╝╚██████╔╝███████║
-╚═╝        ╚═╝   ╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝
-""")
-
 os.chdir(Path(__file__).parent)
 
 username = str(Path().absolute()).split("/")[-1]
@@ -18,20 +10,47 @@ try:
 except FileNotFoundError:
     pass
 
-print("""
-[1] Browser
+print("""[1] Browser
 [2] Terminal
-[3] Calculator
-[4] Text Editor
-[5] Settings
+[3] Files
+[4] Calculator
+[5] Text Editor
+[6] Settings
+[exit] Exit
 """)
 while True:
-    option = int(input("[]: "))
-    if option==1:
-        pass
-    elif option==2:
-        pass
-    elif option==3:
-        os.system("python3 calculator.py")
-    elif option==4:
+    option = input("[]: ")
+    if option=="1":
+        os.system("cls" if os.name=="nt" else "clear")
+        os.system("lynx")
+        print("""[1] Browser
+[2] Terminal
+[3] Files
+[4] Calculator
+[5] Text Editor
+[6] Settings
+[exit] Exit
+""")
+    elif option=="2":
+        runpy.run_path(path_name="terminal.py")
+    elif option=="3":
+        runpy.run_path(path_name="files.py")
+    elif option=="4":
+        runpy.run_path(path_name="calculator.py")
+    elif option=="5":
+        os.system("cls" if os.name=="nt" else "clear")
         os.system("vim")
+        print("""[1] Browser
+[2] Terminal
+[3] Files
+[4] Calculator
+[5] Text Editor
+[6] Settings
+[exit] Exit
+""")
+    elif option=="6":
+        runpy.run_path(path_name="settings.py")
+    elif option=="exit":
+        sys.exit()
+    else:
+        print("Invalid Option.")

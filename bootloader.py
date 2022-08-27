@@ -1,28 +1,38 @@
-import os, time
+import os, time, sys
 from pathlib import Path
 
-os.system("cls" if os.name=="nt" else "clear")
-os.chdir(Path(__file__).parent) 
+def main():
+    os.system("cls" if os.name=="nt" else "clear")
+    os.chdir(Path(__file__).parent) 
 
-def check():
-    if os.path.exists("users"):
-        if not any(os.scandir("users")):
-            os.system("python3 login.py register")
-        else:
-            print("""[1] Login
-[2] Create new user
-            """)
-            option = input("[]: ")
-            if option=="1":
-                os.system("python3 login.py login")
-            elif option=="2":
+    def check(noprint=None):
+        if os.path.exists("users"):
+            if not any(os.scandir("users")):
                 os.system("python3 login.py register")
             else:
-                print("Invalid Option. Please Try again. ")
-                time.sleep(1.5)
-                check()
-    else:
-        os.mkdir("users")
-        check()
+                if not noprint == True:
+                    print("""[1] Login
+[2] Create new user
+[exit] Exit
+                """)
+                else:
+                    print("\n", end="")
+                option = input("[]: ")
+                if option=="exit":
+                    sys.exit()
+                elif option=="1":
+                    os.system("python3 login.py login")
+                elif option=="2":
+                    os.system("python3 login.py register")
+                else:
+                    print("Invalid Option.")
+                    time.sleep(1.5)
+                    check(noprint=True)
+        else:
+            os.mkdir("users")
+            check()
 
-check()
+    check()
+
+if __name__ == '__main__':
+    main()

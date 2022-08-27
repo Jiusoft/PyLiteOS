@@ -1,9 +1,10 @@
-import os, sys, time
+import os, time
+from getpass import getpass
 
 def verify():
     os.system("cls" if os.name=="nt" else "clear")
     password = open("password.pwd", "r").read()
-    pwdinput = input("Please Enter Password: ")
+    pwdinput = getpass("Please Enter Password: ")
     if pwdinput == password:
         os.system("python3 desktop.py")
     else:
