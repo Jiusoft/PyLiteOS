@@ -1,7 +1,8 @@
-import os, time, sys
+import os, time, sys, pyautogui
 from pathlib import Path
 
 def main():
+    pyautogui.press('f11')
     os.system("cls" if os.name=="nt" else "clear")
     os.chdir(Path(__file__).parent) 
 

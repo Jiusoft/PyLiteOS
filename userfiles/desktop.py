@@ -1,5 +1,8 @@
-import os, sys, time, runpy
+import os, sys, time, runpy, signal
 from pathlib import Path
+import pyautogui
+
+signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 
 os.system("clear")
 os.chdir(Path(__file__).parent)
@@ -39,7 +42,7 @@ while True:
         runpy.run_path(path_name="calculator.py")
     elif option=="5":
         os.system("cls" if os.name=="nt" else "clear")
-        os.system("vim")
+        os.system("nano")
         print("""[1] Browser
 [2] Terminal
 [3] Files
@@ -51,6 +54,7 @@ while True:
     elif option=="6":
         runpy.run_path(path_name="settings.py")
     elif option=="exit":
-        sys.exit()
+        pyautogui.press('f11')
+        pyautogui.hotkey('ctrl', 'c')
     else:
         print("Invalid Option.")
