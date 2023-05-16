@@ -1,4 +1,4 @@
-import os, time, sys, pyautogui
+import os, time, sys
 from pathlib import Path
 
 def main():
