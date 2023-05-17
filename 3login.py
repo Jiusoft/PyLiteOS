@@ -5,7 +5,7 @@ args = sys.argv[1:]
 os.system("cls" if os.name=="nt" else "clear")
 
 def register():
-    print("Welcome New User, let's create a new account for PySubOS. ")
+    print("Welcome User, let's create a new account for PyLiteOS. ")
     username = input("Username for New User: ")
     password = getpass("Password for New User: ")
     if not os.path.exists("users"):
