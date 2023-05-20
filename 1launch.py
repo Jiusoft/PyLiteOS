@@ -30,7 +30,7 @@ battlabel2.grid(row=0, column=1)
 battlabel3.grid(row=0, column=2, sticky=NE)
 
 termf.grid(row=1, column=0, columnspan=3, sticky=S)
-#os.system(f'xterm -into {termf.winfo_id()} -geometry {termf.winfo_width()}x{termf.winfo_height()} +sb -bg rgb:ffffff -e python3 2bootloader.py &')
+os.system(f'xterm -into {termf.winfo_id()} -geometry {termf.winfo_width()}x{termf.winfo_height()} +sb -bg rgb:ffffff -e python3 2bootloader.py &')
 update_battery_label()
 
 root.mainloop()
