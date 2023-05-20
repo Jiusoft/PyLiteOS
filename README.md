@@ -1,0 +1,2 @@
+# PyLiteOS
+&nbsp;&nbsp;&nbsp;&nbsp;PyLiteOS is an Operating System that promotes lightweight and usability. It uses [TinyCore Linux](http://www.tinycorelinux.net/) as its base and several Python Scripts for the GUI and Core. It is extremely lightweight and the target user is those who has a really old PC/Laptop and wants to give new life to it but even [Ubuntu](https://ubuntu.com/) or [Linux Mint](https://linuxmint.com/) run very slow.
