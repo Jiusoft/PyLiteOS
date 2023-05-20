@@ -31,7 +31,7 @@ Changable:
             os.system("python3 desktop.py")
 
         elif option == "2":
-            newpassword = input("Enter New Password: ")
+            newpassword = getpass("Enter New Password: ")
             with open("password.pwd", "w") as f:
                 f.write(newpassword)
             input("Press Enter to Restart...")

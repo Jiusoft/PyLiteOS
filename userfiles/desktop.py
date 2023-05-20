@@ -1,9 +1,20 @@
-import os, sys, time, runpy, signal, psutil
+import os, sys, time, runpy, signal, psutil, readline
+readline
+import psutil
+from pathlib import Path
+readline.set_history_length(256)
 
 # Set Ctrl+C Output to Nothing
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 
 os.system("clear")
+print("""██████╗ ██╗   ██╗██╗     ██╗████████╗███████╗ ██████╗ ███████╗
+██╔══██╗╚██╗ ██╔╝██║     ██║╚══██╔══╝██╔════╝██╔═══██╗██╔════╝
+██████╔╝ ╚████╔╝ ██║     ██║   ██║   █████╗  ██║   ██║███████╗
+██╔═══╝   ╚██╔╝  ██║     ██║   ██║   ██╔══╝  ██║   ██║╚════██║
+██║        ██║   ███████╗██║   ██║   ███████╗╚██████╔╝███████║
+╚═╝        ╚═╝   ╚══════╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚══════╝
+""")                                                              
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 username = str(Path().absolute()).split("/")[-1]
@@ -12,27 +23,7 @@ try:
 except FileNotFoundError:
     pass
 
-battery_percent = None
-battery_lock = threading.Lock()
-
-def update_battery():
-    global battery_percent
-    while True:
-        battery = psutil.sensors_battery()
-        battery_percent = battery.percent if battery else "Unknown"
-        time.sleep(5)  # Update the battery count every 5 seconds
-
-battery_thread = threading.Thread(target=update_battery)
-battery_thread.daemon = True
-battery_thread.start()
-
 while True:
-    os.system("clear")  # Clear the screen before updating the battery count
-
-    with battery_lock:
-        current_battery_percent = battery_percent
-
-    print(f"Battery: {current_battery_percent}%\n")
     print("""[1] Browser
 [2] Terminal
 [3] Files
@@ -57,6 +48,7 @@ while True:
     elif option == "6":
         runpy.run_path(path_name="settings.py")
     elif option == "exit":
-        os.system(su -c "shutdown -h now")
+        os.system("su -c \"shutdown -h now\"")
     else:
         print("Invalid Option.")
+

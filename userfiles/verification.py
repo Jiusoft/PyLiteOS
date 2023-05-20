@@ -1,5 +1,8 @@
-import os, time
+import os, sys, time
 from getpass import getpass
+
+if "skipver" in sys.argv:
+    os.system("python3 desktop.py")
 
 def verify():
     os.system("cls" if os.name=="nt" else "clear")

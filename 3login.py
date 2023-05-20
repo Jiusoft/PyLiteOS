@@ -30,7 +30,8 @@ def register():
     os.chdir("../../")
     time.sleep(2)
     os.system("cls" if os.name=="nt" else "clear")
-    login()
+    os.chdir("./users/" + next(os.walk('users'))[1][0])
+    os.system("python3 verification.py skipver")
 
 def login():
     if not os.path.exists("users") or not any(os.scandir("users")):
